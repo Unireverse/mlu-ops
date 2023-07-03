@@ -15,6 +15,7 @@ card_type="MLU370-S4"
 repo_name="mlu-ops-dev"
 
 # repo ci root path
+
 repo_root="/home/cambricon/${repo_name}_ci/"
 if [ ! -d $repo_root ];then
     mkdir $repo_root
