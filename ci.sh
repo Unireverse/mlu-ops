@@ -66,8 +66,8 @@ chmod o+w "$request_root/log_list"
 echo "${repo_name},${pr_id},${currentTimeStamp},${card_type}" > "$requests_path/${request_name}"
 
 # change dir group for server and client, or when server/client try to delete request, ftp may raise error.
-chgrp -R ftpuser $request_root
-chgrp -R ftpuser $requests_path
+chgrp -R cambricon $request_root
+chgrp -R cambricon $requests_path
 
 # start script
 python3 file_guard.py "$request_root/status" "$request_root/log" &
