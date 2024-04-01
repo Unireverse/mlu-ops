@@ -33,14 +33,13 @@ on:
       - 'requirements.txt'
       - '.github/workflows/mluops_all_system_ci.yaml'
       - '.github/workflows/daily.yaml'
+  pull_request_target:
+    branches: [master, r*]
+    types: [assigned, opened, synchronize, reopen]
 
 jobs:
   test:
-    strategy:
-      matrix:
-        runner: [mlu370-m8]
-        mlu_ops_version : [v1.0.0]
-    runs-on: [yellow]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
