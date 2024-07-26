@@ -48,4 +48,4 @@ jobs:
 
       - name: run_mlu_ops_ci
         run: >
-          echo $GITHUB_REF && python3 .github/ci_script/invoke_jenkins.py os=ubuntu20.04 require_test=True card_type=0 pr=${GITHUB_REF}
+          python3 .github/ci_script/invoke_jenkins.py os=ubuntu20.04 require_test=True card_type=0 pr=${GITHUB_REF}

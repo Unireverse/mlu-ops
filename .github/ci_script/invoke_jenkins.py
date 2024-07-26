@@ -17,22 +17,26 @@ card_type = 0
 pr_id = 0
 
 
-for pair in sys.argv[1:-1]:
+for pair in sys.argv[1:]:
     print(pair)
-    key, value = pair.split("=")
+    try:
+        key, value = pair.split("=")
+    except Exception as e:
+        print(e)
+        exit(-1)
     if key == "os":
         os_version = value
     if key == "require_test":
         require_test = bool(value)
     if key == "card_type":
         card_type = int(value)
-    if key == "pr_id":
-        pr_id == value
-exit()
+    if key == "pr":
+        pr_id = value.split("/")[2]
+
 timestamp = str(int(time.time() * 10000))
 
 test_infos = {
-    "system_os": os_version,
+    "os_version": os_version,
     "type": "ci",
     "pr_id": pr_id,
     "timestamp": timestamp,
@@ -40,7 +44,8 @@ test_infos = {
 }
 
 response = requests.post(localhost, json=test_infos)
-
+print(response.status_code, response.text)
+exit()
 if response.status_code == 200:
     while 1:
         response = requests.get(localhost + "?type=10&pr_id=" + str(pr_id) + "&timestamp=" + timestamp + "&system_os=" + system_version)
