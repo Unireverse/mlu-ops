@@ -37,7 +37,12 @@ try:
         result = json.loads(response.text)
         if "success" in result["status"] or "fail" in result["status"] or "error" in result["status"] or "stable" in result["status"]:
             print(result["log"])
+            print(result["status"])
             response = requests.get(local_test_server + "/aiming=end_job&id=" + task_obj["id"])
+            if "success" in result["status"]:
+                exit(0)
+            else:
+                exit(-1)
             break
         time.sleep(10)
 except Exception as e:

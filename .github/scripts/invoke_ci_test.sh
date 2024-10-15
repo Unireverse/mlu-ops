@@ -17,4 +17,4 @@ repo_name="mlu-ops"
 github_user=${GITHUB_ACTOR}
 
 # start script
-# python3 .github/script/run_ci_test.py ${repo_name} ${user} ${pr_id} ${current_timestamp}
+python3 .github/scripts/run_ci_test.py ${repo_name} ${github_user} ${pr_id} ${current_timestamp}
